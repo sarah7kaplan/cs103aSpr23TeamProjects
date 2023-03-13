@@ -51,6 +51,13 @@ def sarah_kaplan():
         and minoring in Linguistics. In this project, she created the index page, \
             about page, her own bio page, and ___.'''
 
+@app.route('/michael_pyrdol')
+def michael_pyrdol():
+    return "Michael Pyrdol is a junior at Brandeis majoring in Computer Science \
+        and minoring in Anthropology. He plays the clarinet in various ensembles \
+        on campus, and he is also a music director for Top Score, \
+        the student-led orchestra."
+
 # @app.route('/TEAM_MEMBER')
 # def TEAM_MEMBER():
 #     return "bio, role"
