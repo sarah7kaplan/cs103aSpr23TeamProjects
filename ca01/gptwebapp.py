@@ -35,6 +35,9 @@ def index():
     return f'''
         <h1>GPT Demo</h1>
         <a href="{url_for('gptdemo')}">Ask questions to GPT</a>
+        <h1>Team Members</h1>
+        <a href="{url_for('sarah_kaplan')}">View Sarah Kaplan's bio!</a>
+        <a href="{url_for('INSERT TEAM MEMBER')}">View TEAM MEMBER's bio!</a>
     '''
 
 @app.route('/about')
@@ -46,9 +49,9 @@ def sarah_kaplan():
     return "Sarah Kaplan is a junior at Brandeis majoring in Computer Science \
         and minoring in Linguistics. Her role in this project was..."
 
-@app.route('/index')
-def index():
-    
+@app.route('/TEAM_MEMBER')
+def TEAM_MEMBER():
+    return "bio, role"
 
 @app.route('/gptdemo', methods=['GET', 'POST'])
 def gptdemo():
