@@ -37,7 +37,6 @@ def index():
         <a href="{url_for('gptdemo')}">Ask questions to GPT</a>
         <h1>Team Members</h1>
         <a href="{url_for('sarah_kaplan')}">View Sarah Kaplan's bio!</a>
-        <a href="{url_for('INSERT TEAM MEMBER')}">View TEAM MEMBER's bio!</a>
     '''
 
 @app.route('/about')
@@ -46,12 +45,15 @@ def about():
 
 @app.route('/sarah_kaplan')
 def sarah_kaplan():
-    return "Sarah Kaplan is a junior at Brandeis majoring in Computer Science \
-        and minoring in Linguistics. Her role in this project was..."
+    return '''
+    <h1>Sarah Kaplan</h1>
+    Sarah Kaplan is a junior at Brandeis majoring in Computer Science \
+        and minoring in Linguistics. In this project, she created the index page, \
+            about page, her own bio page, and ___.'''
 
-@app.route('/TEAM_MEMBER')
-def TEAM_MEMBER():
-    return "bio, role"
+# @app.route('/TEAM_MEMBER')
+# def TEAM_MEMBER():
+#     return "bio, role"
 
 @app.route('/gptdemo', methods=['GET', 'POST'])
 def gptdemo():
