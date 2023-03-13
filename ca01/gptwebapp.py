@@ -37,6 +37,18 @@ def index():
         <a href="{url_for('gptdemo')}">Ask questions to GPT</a>
     '''
 
+@app.route('/about')
+def about():
+    return "Our program..."
+
+@app.route('/sarah_kaplan')
+def sarah_kaplan():
+    return "Sarah Kaplan is a junior at Brandeis majoring in Computer Science \
+        and minoring in Linguistics. Her role in this project was..."
+
+@app.route('/index')
+def index():
+    
 
 @app.route('/gptdemo', methods=['GET', 'POST'])
 def gptdemo():
