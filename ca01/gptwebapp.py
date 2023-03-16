@@ -35,21 +35,30 @@ def index():
     return f'''
         <h1>GPT Demo</h1>
         <a href="{url_for('gptdemo')}">Ask questions to GPT</a>
-        <h1>Team Members</h1>
-        <a href="{url_for('sarah_kaplan')}">View Sarah Kaplan's bio!</a>
     '''
 
 @app.route('/about')
 def about():
     return "Our program..."
 
+@app.route('/index')
+def team_index():
+    '''display an index of team members'''
+    return f'''
+    <h1>Team Members</h1>
+        <a href="{url_for('sarah_kaplan')}">View Sarah Kaplan's bio!</a>
+        <a href="{url_for('michael_pyrdol')}">View Michael Pyrdol's bio!</a>
+    '''
+
 @app.route('/sarah_kaplan')
 def sarah_kaplan():
     return '''
     <h1>Sarah Kaplan</h1>
     Sarah Kaplan is a junior at Brandeis majoring in Computer Science \
-        and minoring in Linguistics. In this project, she created the index page, \
-            about page, her own bio page, and ___.'''
+    and minoring in Linguistics. In her free time, she is the treasurer \
+    for Hold Thy Peace and the Guitar and Bass Club. In this project, \
+    she created the index page, about page, her own bio page, and ___.
+    '''
 
 @app.route('/michael_pyrdol')
 def michael_pyrdol():
