@@ -45,6 +45,13 @@ class GPT():
         response = completion.choices[0].text
         return response
 
+    
+    def get_summarization(self, article):
+        ''' Generate a summary of the given article '''
+        prompt = f"Summarize the following article:\n\n{article}"
+        response = self.getResponse(prompt)
+        return response
+    
 if __name__=='__main__':
     '''
     '''
