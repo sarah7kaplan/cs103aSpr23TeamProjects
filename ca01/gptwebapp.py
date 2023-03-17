@@ -83,6 +83,8 @@ def michael_pyrdol():
 def xinyi_shang():
      return '''
     <h1>Xinyi Shang</h1>
+    Xinyi Shang is a senior at Brandeis majoing in Biology \
+    and minoring in computer science. She enjoys reading and painting when she's free.\
     Definitely a dog person. 
     '''
 
