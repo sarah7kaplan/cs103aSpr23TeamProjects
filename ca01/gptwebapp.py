@@ -223,7 +223,7 @@ def rhymification():
         answer = gptAPI.get_poem(article)
         return f'''
         <h1>Rhymify</h1>
-        <pre style="bgcolor:yellow">{prompt}</pre>
+        <pre style="bgcolor:yellow">{article}</pre>
         <hr>
         Here is the rhyming poem text in text mode:
         <div style="border:thin solid black">{answer}</div>
