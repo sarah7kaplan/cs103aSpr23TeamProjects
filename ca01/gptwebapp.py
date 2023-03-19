@@ -56,8 +56,8 @@ def about():
     return "Our program specializes in transforming articles into different text types based on prompts \
     specified by the user. For example, we have a tool that summarizes an article to a fewer words \
     based on its main ideas, rewrites the article while still including all details but with vocabulary \
-    a grade-schooler can understand, rewrites the article with shakespare language, and rewrites an article \
-    as a poem that rhymes"
+    a grade-schooler can understand, transforms the article into Shakespearean language, and rewrites the \
+    article as a rhyming poem."
 
     
 @app.route('/index')
