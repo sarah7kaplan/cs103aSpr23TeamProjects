@@ -193,7 +193,7 @@ def Simplification():
     ''' handle a get request by sending an article returning the simplified version of text
     '''
     if request.method == 'POST':
-        article = request.form['article']
+        article = request.form['prompt']
         answer = gptAPI.getSimplification(article)
         return f'''
         <h1>GPT Demo</h1>
