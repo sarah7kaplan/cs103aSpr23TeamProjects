@@ -166,7 +166,6 @@ def gptdemo():
 
 @app.route('/summarization', methods=['GET', 'POST'])
 def summarization():
-    #Method: get summarization of an article. 
     ''' handle a get request by sending a form 
         and a post request by returning the GPT summary
     '''
