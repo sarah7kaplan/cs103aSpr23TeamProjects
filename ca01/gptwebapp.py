@@ -107,7 +107,7 @@ def james_yu():
     James Yu is a junior at Brandeis University majoring in Physics and \
     minoring in Computer Science. He likes to listen to and make music with his guitar \
     and cello, and run in his free time. He also likes applying his computer science skills \
-    to an on-campus research group in the physics department.
+    to an on-campus research group in the physics department. He is responsible for making the Simplification method.
     '''
 
 @app.route('/shakespearify', methods=['GET', 'POST'])
