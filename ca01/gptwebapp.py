@@ -34,7 +34,7 @@ def index():
     print('processing / route')
     return f'''
         <h1>Team</h1>
-        <a href="{url_for('team_index')}">Check our team!</a>
+        <a href="{url_for('team_index')}">Check out our team!</a>
         <br>
         <h1>About</h1>
         <a href="{url_for('about')}">Check what we are doing for this project!</a>
@@ -45,6 +45,8 @@ def index():
         <a href="{url_for('summarization')}">Summarize an article with GPT</a>
         <br>
         <a href="{url_for('Simplification')}">Rewrite a given article with simpler vocabulary</a>
+        <br>
+        <a href="{url_for('shakespearify')}">Rewrite a given chunk of text in iambic pentameter and early modern English</a>
     '''
 
 @app.route('/about')
@@ -76,7 +78,8 @@ def sarah_kaplan():
     Sarah Kaplan is a junior at Brandeis majoring in Computer Science \
     and minoring in Linguistics. In her free time, she is the treasurer \
     for Hold Thy Peace and the Guitar and Bass Club. In this project, \
-    she created the index page, about page, her own bio page, and ___.
+    she created the index page, about page, her own bio page, and the \
+    Shakespearify method.
     '''
 
 @app.route('/michael_pyrdol')
@@ -105,9 +108,32 @@ def james_yu():
     to an on-campus research group in the physics department.
     '''
 
-# @app.route('/TEAM_MEMBER')
-# def TEAM_MEMBER():
-#     return "bio, role"
+@app.route('/shakespearify', methods=['GET', 'POST'])
+def shakespearify():
+    '''send a chunk of text and turn it into
+        iambic pentameter'''
+    if request.method == 'POST':
+        article = request.form['prompt']
+        answer = gptAPI.getShakespearify(article)
+        return f'''
+        <h1>Shakespearify</h1>
+        <pre style="bgcolor:yellow">{prompt}</pre>
+        <hr>
+        Here is the Shakespearified text in text mode:
+        <div style="border:thin solid black">{answer}</div>
+        Here is the Shakespearified text in "pre" mode:
+        <pre style="border:thin solid black">{answer}</pre>
+        <a href={url_for('shakespearify')}> make another query?</a>
+        '''
+    else:
+        return '''
+        <h1>Shakespearify</h1>
+        Enter your text below
+        <form method="post">
+            <textarea name="prompt"></textarea>
+            <p><input type=submit value="rewrite text in iambic pentameter and early modern English">
+        </form>
+        '''
 
 @app.route('/gptdemo', methods=['GET', 'POST'])
 def gptdemo():
