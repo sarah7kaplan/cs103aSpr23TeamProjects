@@ -231,7 +231,7 @@ def rhymification():
         <div style="border:thin solid black">{answer}</div>
         Here is the rhyming poem text in "pre" mode:
         <pre style="border:thin solid black">{answer}</pre>
-        <a href={url_for('rhymify')}> make another query?</a>
+        <a href={url_for('rhymification')}> make another query?</a>
         '''
     else:
         return '''
