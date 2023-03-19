@@ -55,7 +55,7 @@ class GPT():
 
     def getSimplification(self, article):
         ''' Generate a simplified version of a text with grade school level vocabulary '''
-        prompt = "Rewrite the following article with elemntary school level vocabulary:" + article
+        prompt = "Rewrite the following article with elementary school level vocabulary:" + article
         response = self.getResponse(prompt)
         return response
     
