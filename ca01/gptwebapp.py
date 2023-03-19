@@ -37,7 +37,7 @@ def index():
         <a href="{url_for('team_index')}">Check out our team!</a>
         <br>
         <h1>About</h1>
-        <a href="{url_for('about')}">Check what we are doing for this project!</a>
+        <a href="{url_for('about')}">Check out what we are doing for this project!</a>
         <br>
         <h1>GPT Demo</h1>
         <a href="{url_for('gptdemo')}">Ask questions to GPT</a>
