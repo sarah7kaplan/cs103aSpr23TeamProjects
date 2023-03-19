@@ -216,6 +216,31 @@ def Simplification():
         </form>
         '''
 
+@app.route('/rhymingPoem', methods=['GET', 'POST'])
+def rhymification():
+    '''handle a get request by sending an article returning a poem that rhymes'''
+    if request.method == 'POST':
+        article = request.form['prompt']
+        answer = gptAPI.get_poem(article)
+        return f'''
+        <h1>Rhymify</h1>
+        <pre style="bgcolor:yellow">{prompt}</pre>
+        <hr>
+        Here is the rhyming poem text in text mode:
+        <div style="border:thin solid black">{answer}</div>
+        Here is the rhyming poem text in "pre" mode:
+        <pre style="border:thin solid black">{answer}</pre>
+        <a href={url_for('rhymify')}> make another query?</a>
+        '''
+    else:
+        return '''
+        <h1>Rhymification</h1>
+        Enter your text below
+        <form method="post">
+            <textarea name="prompt"></textarea>
+            <p><input type=submit value="get article in the form of a rhyming poem">
+        </form>
+        '''
 
 if __name__=='__main__':
     # run the code on port 5001, MacOS uses port 5000 for its own service :(
