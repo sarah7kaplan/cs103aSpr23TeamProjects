@@ -47,6 +47,8 @@ def index():
         <a href="{url_for('Simplification')}">Rewrite a given article with simpler vocabulary</a>
         <br>
         <a href="{url_for('shakespearify')}">Rewrite a given chunk of text in Shakespearean English!</a>
+        <br>
+        <a href="{url_for('rhymification')}">Rewrite a chunk of text as a poem that rhymes</a>
     '''
 
 @app.route('/about')
