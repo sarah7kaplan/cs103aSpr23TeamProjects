@@ -43,11 +43,16 @@ def index():
         <a href="{url_for('gptdemo')}">Ask questions to GPT</a>
         <br>
         <a href="{url_for('summarization')}">Summarize an article with GPT</a>
+        <br>
+        <a href="{url_for('Simplification')}">Rewrite a given article with simpler vocabulary</a>
     '''
 
 @app.route('/about')
 def about():
-    return "Our program..."
+    return "Our program specializes in transforming articles into different text types based on prompts \
+    specified by the user. For example, we have a tool that summarizes an article to a fewer words \
+    based on its main ideas, and another method that rewrites the article while still including \
+    all details but with vocabulary a grade-schooler can understand."
 
     
 @app.route('/index')
@@ -158,6 +163,34 @@ def summarization():
             <p><input type=submit value="get summary">
         </form>
         '''
+@app.route('/Simplification', methods=['GET', 'POST'])
+def Simplification():
+    ''' handle a get request by sending an article returning the simplified version of text
+    '''
+    if request.method == 'POST':
+        article = request.form['prompt']
+        prompt = "Please rewrite the article using grade-school level vocabulary: " + article
+        answer = gptAPI.getResponse(prompt)
+        return f'''
+        <h1>GPT Demo</h1>
+        <pre style="bgcolor:yellow">{prompt}</pre>
+        <hr>
+        Here is the simplified text in text mode:
+        <div style="border:thin solid black">{answer}</div>
+        Here is the simplified text in "pre" mode:
+        <pre style="border:thin solid black">{answer}</pre>
+        <a href={url_for('Simplification')}> make another query</a>
+        '''
+    else:
+        return '''
+        <h1>Simplification</h1>
+        Enter your article below
+        <form method="post">
+            <textarea name="prompt"></textarea>
+            <p><input type=submit value="get simplified article">
+        </form>
+        '''
+
 
 if __name__=='__main__':
     # run the code on port 5001, MacOS uses port 5000 for its own service :(
