@@ -60,6 +60,8 @@ def team_index():
         <a href="{url_for('michael_pyrdol')}">View Michael Pyrdol's bio!</a>
         <br>
         <a href="{url_for('xinyi_shang')}">View Xinyi Shang's bio!</a>
+        <br>
+        <a href="{url_for('james_yu')}">View James Yu's bio!</a>
     '''
 
 @app.route('/sarah_kaplan')
@@ -86,6 +88,16 @@ def xinyi_shang():
     Xinyi Shang is a senior at Brandeis majoing in Biology \
     and minoring in computer science. She enjoys reading and painting when she's free.\
     Definitely a dog person. 
+    '''
+
+@app.route('/james_yu')
+def james_yu():
+     return '''
+    <h1>James Yu</h1>
+    James Yu is a junior at Brandeis University majorin in Physics and \
+    minoring in Computer Science. He likes to listen and make music with his guitar \
+    and cello, and run in his free time. He also likes applying his computer science skills \
+    to an on-campus research group in the physics department.
     '''
 
 # @app.route('/TEAM_MEMBER')
