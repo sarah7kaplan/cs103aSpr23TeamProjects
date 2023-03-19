@@ -169,7 +169,7 @@ def summarization():
         and a post request by returning the GPT summary
     '''
     if request.method == 'POST':
-        article = request.form['article']
+        article = request.form['prompt']
         summary = gptAPI.get_summarization(article)
         return f'''
         <h1>Summarization Demo</h1>
