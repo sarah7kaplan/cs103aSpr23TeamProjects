@@ -66,7 +66,7 @@ class GPT():
     
     def getPoem(self, article):
         ''' Generate a modified version of the article which replaces a poem that rhymes '''
-        prompt = "Rewrite the following article as a poem that rhymes with an AABBA pattern:" + article
+        prompt = "Rewrite the following article as a poem that rhymes:" + article
         response = self.getResponse(prompt)
         return response
     
