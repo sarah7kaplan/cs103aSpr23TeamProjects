@@ -53,7 +53,7 @@ class GPT():
 
     def get_summarization(self, article):
         ''' Generate a summary of the given article '''
-        prompt = "Summarize the following article:" + article
+        prompt = "Summarize the following article with fewer words:" + article
         response = self.getResponse(prompt)
         return response
 

@@ -55,8 +55,9 @@ def index():
 def about():
     return "Our program specializes in transforming articles into different text types based on prompts \
     specified by the user. For example, we have a tool that summarizes an article to a fewer words \
-    based on its main ideas, and another method that rewrites the article while still including \
-    all details but with vocabulary a grade-schooler can understand."
+    based on its main ideas, rewrites the article while still including all details but with vocabulary \
+    a grade-schooler can understand, rewrites the article with shakespare language, and rewrites an article \
+    as a poem that rhymes"
 
     
 @app.route('/index')
@@ -97,7 +98,8 @@ def xinyi_shang():
     <h1>Xinyi Shang</h1>
     Xinyi Shang is a senior at Brandeis majoing in Biology \
     and minoring in computer science. She enjoys reading and painting when she's free.\
-    Definitely a dog person. 
+    Definitely a dog person. In this project, Xinyi implemented the Summarization method, \
+    created her own bio page, and organized some of the pages.  
     '''
 
 @app.route('/james_yu')
