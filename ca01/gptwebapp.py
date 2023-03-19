@@ -222,7 +222,7 @@ def rhymification():
     '''handle a get request by sending an article returning a poem that rhymes'''
     if request.method == 'POST':
         article = request.form['prompt']
-        answer = gptAPI.get_poem(article)
+        answer = gptAPI.getPoem(article)
         return f'''
         <h1>Rhymify</h1>
         <pre style="bgcolor:yellow">{article}</pre>
@@ -231,7 +231,7 @@ def rhymification():
         <div style="border:thin solid black">{answer}</div>
         Here is the rhyming poem text in "pre" mode:
         <pre style="border:thin solid black">{answer}</pre>
-        <a href={url_for('rhymify')}> make another query?</a>
+        <a href={url_for('rhymification')}> make another query?</a>
         '''
     else:
         return '''
