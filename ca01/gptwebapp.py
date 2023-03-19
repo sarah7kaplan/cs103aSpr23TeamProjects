@@ -46,9 +46,7 @@ def index():
         <br>
         <a href="{url_for('Simplification')}">Rewrite a given article with simpler vocabulary</a>
         <br>
-        <a href="{url_for('shakespearify')}">Rewrite a given chunk of text in iambic pentameter and early modern English</a>
-        <br>
-        <a href="{url_for('rhymification')}">Rewrite a chunk of text as a poem that rhymes</a>
+        <a href="{url_for('shakespearify')}">Rewrite a given chunk of text in Shakespearean English!</a>
     '''
 
 @app.route('/about')
@@ -80,7 +78,7 @@ def sarah_kaplan():
     Sarah Kaplan is a junior at Brandeis majoring in Computer Science \
     and minoring in Linguistics. In her free time, she is the treasurer \
     for Hold Thy Peace and the Guitar and Bass Club. In this project, \
-    she created the index page, about page, her own bio page, and the \
+    she created the index page, some of the about page, her own bio page, and the \
     Shakespearify method.
     '''
 
@@ -112,11 +110,10 @@ def james_yu():
 
 @app.route('/shakespearify', methods=['GET', 'POST'])
 def shakespearify():
-    '''send a chunk of text and turn it into
-        iambic pentameter'''
+    '''send a chunk of text and turn it into iambic pentameter'''
     if request.method == 'POST':
-        article = request.form['prompt']
-        answer = gptAPI.get_shakespearify(article)
+        prompt = request.form['prompt']
+        answer = gptAPI.get_shakespearify(prompt)
         return f'''
         <h1>Shakespearify</h1>
         <pre style="bgcolor:yellow">{prompt}</pre>
@@ -133,7 +130,7 @@ def shakespearify():
         Enter your text below
         <form method="post">
             <textarea name="prompt"></textarea>
-            <p><input type=submit value="rewrite text in iambic pentameter and early modern English">
+            <p><input type=submit value="Shakespearify!">
         </form>
         '''
 
