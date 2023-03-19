@@ -47,6 +47,8 @@ def index():
         <a href="{url_for('Simplification')}">Rewrite a given article with simpler vocabulary</a>
         <br>
         <a href="{url_for('shakespearify')}">Rewrite a given chunk of text in iambic pentameter and early modern English</a>
+        <br>
+        <a href="{url_for('rhymification')}">Rewrite a chunk of text as a poem that rhymes</a>
     '''
 
 @app.route('/about')
@@ -216,7 +218,7 @@ def Simplification():
         </form>
         '''
 
-@app.route('/rhymingPoem', methods=['GET', 'POST'])
+@app.route('/rhymification', methods=['GET', 'POST'])
 def rhymification():
     '''handle a get request by sending an article returning a poem that rhymes'''
     if request.method == 'POST':
