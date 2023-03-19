@@ -169,8 +169,7 @@ def Simplification():
     '''
     if request.method == 'POST':
         article = request.form['prompt']
-        prompt = "Please rewrite the article using grade-school level vocabulary: " + article
-        answer = gptAPI.getResponse(prompt)
+        answer = gptAPI.getSimplification(article)
         return f'''
         <h1>GPT Demo</h1>
         <pre style="bgcolor:yellow">{prompt}</pre>
