@@ -48,7 +48,14 @@ class GPT():
     
     def get_summarization(self, article):
         ''' Generate a summary of the given article '''
-        prompt = f"Summarize the following article:\n\n{article}"
+        prompt = "Summarize the following article:" + article
+        response = self.getResponse(prompt)
+        return response
+
+
+    def getSimplification(self, article):
+        ''' Generate a simplified version of a text with grade school level vocabulary '''
+        prompt = "Rewrite the following article with elemntary school level vocabulary:" + article
         response = self.getResponse(prompt)
         return response
     
