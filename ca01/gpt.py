@@ -45,7 +45,12 @@ class GPT():
         response = completion.choices[0].text
         return response
 
-    
+    def get_shakespearify(self, article):
+        '''Generate a Shakespearified version of the given text'''
+        prompt = "Rewrite the following article into iambic pentameter and early Modern English:" + article
+        response = self.getResponse(prompt)
+        return response
+
     def get_summarization(self, article):
         ''' Generate a summary of the given article '''
         prompt = "Summarize the following article:" + article

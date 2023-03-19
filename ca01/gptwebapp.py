@@ -114,7 +114,7 @@ def shakespearify():
         iambic pentameter'''
     if request.method == 'POST':
         article = request.form['prompt']
-        answer = gptAPI.getShakespearify(article)
+        answer = gptAPI.get_shakespearify(article)
         return f'''
         <h1>Shakespearify</h1>
         <pre style="bgcolor:yellow">{prompt}</pre>
