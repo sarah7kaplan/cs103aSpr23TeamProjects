@@ -13,10 +13,19 @@
 # 11. print this menu
 
 import sqlite3
+import transaction
 
-def add_transaction(self, item_number, amount, category, date, description):
-        with sqlite3.connect(self.filename) as conn:
-            c = conn.cursor()
-            c.execute('''INSERT INTO transactions (item_number, amount, category, date, description)
-                            VALUES (?, ?, ?, ?, ?)''', (item_number, amount, category, date, description))
-            conn.commit()
+from transaction import Transaction
+
+class Tracker:
+    def __init__(self, db_filename):
+        self.db = Transaction(db_filename)
+
+    def add_transaction(self):
+        item_number = int(input("Enter item number: "))
+        amount = float(input("Enter amount: "))
+        category = input("Enter category: ")
+        date = input("Enter date (YYYY-MM-DD): ")
+        description = input("Enter description: ")
+        self.db.add_transaction(item_number, amount, category, date, description)
+        print("Transaction added successfully!")
