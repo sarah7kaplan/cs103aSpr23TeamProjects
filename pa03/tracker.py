@@ -19,16 +19,22 @@ from transaction import Transaction
 def quit_program():
     quit()
 
+# Sarah Kaplan
 def show_categories():
-    pass
+    print(t.show_categories())
 
+# Sarah Kaplan
 def add_category():
     category = input("Enter category: ")
     t.add_category(category)
     print("Category added successfully!")
 
+# Sarah Kaplan
 def modify_category():
-    pass
+    old = input("Which category do you want to modify? ")
+    new = input("What should it become? ")
+    t.modify_category(old, new)
+    print("Category modified successfully!")
 
 def show_transactions():
     pass
