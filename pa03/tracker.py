@@ -13,6 +13,23 @@
 # 11. print this menu
 
 import sqlite3
+import transaction
+
+from transaction import Transaction
+
+class Tracker:
+    def __init__(self, db_filename):
+        self.db = Transaction(db_filename)
+
+    def add_transaction(self):
+        item_number = int(input("Enter item number: "))
+        amount = float(input("Enter amount: "))
+        category = input("Enter category: ")
+        date = input("Enter date (YYYY-MM-DD): ")
+        description = input("Enter description: ")
+        self.db.add_transaction(item_number, amount, category, date, description)
+        print("Transaction added successfully!")
+        
 from transaction import Transaction
 filename=""
 userInput=input("Please select an action:\n0. quit\n1. show categories\n2. add category\n3. modify category\n4. show transactions\n5. add transaction\n6. delete transaction\n7. summarize transactions by date\n8. summarize transactions by month\n9. summarize transactions by year\n10. summarize transactions by category\n11. print this menu\n")

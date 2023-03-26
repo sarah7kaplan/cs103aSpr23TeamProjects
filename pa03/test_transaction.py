@@ -1,21 +1,31 @@
 import pytest
+import os
 import sqlite3
 from transaction import Transaction
 
-@pytest.fixture
-def transaction():
-    return Transaction('test.db')
+# Set up a test database file
+TEST_DB_FILE = 'test.db'
+if os.path.exists('test.db'):
+        os.remove('test.db')
 
-def test_add_transaction(transaction):
-    transaction.add_transaction(1, 10.0, "Food", "2022-04-01", "Lunch")
+# Test add_transaction method
+def test_add_transaction():
+    # Initialize a transaction object using the test database file
+    trans = Transaction(TEST_DB_FILE)
 
-    with sqlite3.connect("test.db") as conn:
+    # Add a transaction
+    trans.add_transaction(1, 50.0, 'food', '2022-04-01', 'groceries')
+
+    # Check that the transaction was added correctly
+    with sqlite3.connect(TEST_DB_FILE) as conn:
         c = conn.cursor()
-        c.execute('''SELECT * FROM transactions WHERE item_number = ?''', (1,))
-        result = c.fetchone()
-        assert result is not None
-        assert result[1] == 1
-        assert result[2] == 10.0
-        assert result[3] == "Food"
-        assert result[4] == "2022-04-01"
-        assert result[5] == "Lunch"
+        c.execute('SELECT * FROM transactions WHERE item_number = ?', (1,))
+        row = c.fetchone()
+        print(row)
+        assert row is not None
+        assert row[1] == 1
+        assert row[2] == 50.0
+        assert row[3] == 'food'
+        assert row[4] == '2022-04-01'
+        assert row[5] == 'groceries'
+

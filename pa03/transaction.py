@@ -19,5 +19,12 @@ class Transaction:
                             description TEXT
                         )''')
             conn.commit()
+    def add_transaction(self, item_number, amount, category, date, description):
+        with sqlite3.connect(self.filename) as conn:
+            c = conn.cursor()
+            c.execute('''INSERT INTO transactions (
+                            item_number, amount, category, date, description
+                        ) VALUES (?, ?, ?, ?, ?)''', (item_number, amount, category, date, description))
+            conn.commit()
             
     
