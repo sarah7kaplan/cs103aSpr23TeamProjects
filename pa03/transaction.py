@@ -6,6 +6,7 @@ class Transaction:
     def __init__(self,filename):
         self.filename = filename
         self.create_table()
+
     def create_table(self):
         with sqlite3.connect(self.filename) as conn:
             c = conn.cursor()
@@ -18,6 +19,7 @@ class Transaction:
                             description TEXT
                         )''')
             conn.commit()
+            
     def add_transaction(self, item_number, amount, category, date, description):
         with sqlite3.connect(self.filename) as conn:
             c = conn.cursor()

@@ -1,4 +1,5 @@
 import pytest
+import sqlite3
 from transaction import Transaction
 
 @pytest.fixture
@@ -6,16 +7,15 @@ def transaction():
     return Transaction('test.db')
 
 def test_add_transaction(transaction):
-    # Add a new transaction
-    transaction.add_transaction('Item 1', 10.0, 'Groceries', '2023-03-26', 'Groceries from Hannaford')
-    
-    # Retrieve the transaction from the database
-    result = transaction.get_transactions()
-    
-    # Verify that the transaction was added
-    assert len(result) == 1
-    assert result[0]['item'] == 'Item 1'
-    assert result[0]['amount'] == 10.0
-    assert result[0]['category'] == 'Groceries'
-    assert result[0]['date'] == '2023-03-26'
-    assert result[0]['description'] == 'Groceries from Hannaford'
+    transaction.add_transaction(1, 10.0, "Food", "2022-04-01", "Lunch")
+
+    with sqlite3.connect("test.db") as conn:
+        c = conn.cursor()
+        c.execute('''SELECT * FROM transactions WHERE item_number = ?''', (1,))
+        result = c.fetchone()
+        assert result is not None
+        assert result[1] == 1
+        assert result[2] == 10.0
+        assert result[3] == "Food"
+        assert result[4] == "2022-04-01"
+        assert result[5] == "Lunch"
