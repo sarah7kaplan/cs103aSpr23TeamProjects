@@ -19,6 +19,7 @@ class Transaction:
                             description TEXT
                         )''')
             conn.commit()
+   
     def add_transaction(self, item_number, amount, category, date, description):
         with sqlite3.connect(self.filename) as conn:
             c = conn.cursor()
@@ -26,5 +27,10 @@ class Transaction:
                             item_number, amount, category, date, description
                         ) VALUES (?, ?, ?, ?, ?)''', (item_number, amount, category, date, description))
             conn.commit()
-            
     
+    #Sarah Kaplan        
+    def add_category(self, new_cat):
+         with sqlite3.connect(self.filename) as conn:
+            c = conn.cursor()
+            c.execute('''INSERT INTO transactions (category) VALUE (?)''', (new_cat))
+            conn.commit()

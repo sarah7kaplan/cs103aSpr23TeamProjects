@@ -23,7 +23,9 @@ def show_categories():
     pass
 
 def add_category():
-    pass
+    category = input("Enter category: ")
+    t.add_category(category)
+    print("Category added successfully!")
 
 def modify_category():
     pass
