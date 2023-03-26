@@ -29,3 +29,20 @@ def test_add_transaction():
         assert row[4] == '2022-04-01'
         assert row[5] == 'groceries'
 
+# Test delete_transaction
+# Sarah Kaplan
+def test_delete():
+    # Initialize a transaction object using the test database file
+    trans = Transaction(TEST_DB_FILE)
+
+    # Add a transaction and then delete it
+    trans.add_transaction(1, 50.0, 'food', '2022-04-01', 'groceries')
+    trans.delete_transaction(1)
+
+    # Check it was deleted
+    with sqlite3.connect(TEST_DB_FILE) as conn:
+        c = conn.cursor()
+        c.execute("SELECT * FROM transactions WHERE item_number=(?)", (1))
+
+
+
