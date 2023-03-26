@@ -27,4 +27,10 @@ class Transaction:
                             item_number, amount, category, date, description
                         ) VALUES (?, ?, ?, ?, ?)''', (item_number, amount, category, date, description))
             conn.commit()
-
+   
+    # Sarah Kaplan
+    def delete_transaction(self, trans):
+        with sqlite3.connect(self.filename) as conn:
+            c = conn.cursor()
+            c.execute("DELETE FROM transactions where item_number=(?)",(trans))
+            conn.commit()

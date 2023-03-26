@@ -32,8 +32,11 @@ def add_transaction():
     t.add_transaction(item_number, amount, category, date, description)
     print("Transaction added successfully!")
 
+# Sarah Kaplan
 def delete_transaction():
-    pass
+    trans = int(input("Please enter the transaction item number you would like to delete: "))
+    t.delete_transaction(trans)
+    print("Transaction deleted successfully!")
 
 def sum_date():
     pass
@@ -48,18 +51,15 @@ def sum_cat():
     pass
 
 def print_menu():
-    print("0. Quit")
-    print("1. Show Categories")
-    print("2. Add Category")
-    print("3. Modify Category")
-    print("4. Show Transactions")
-    print("5. Add Transaction")
-    print("6. Delete Transaction")
-    print("7. Summarize Transactions by Date")
-    print("8. Summarize Transactions by Month")
-    print("9. Summarize Transactions by Year")
-    print("10. Summarize Transactions by Category")
-    print("11. Print this menu")
+    print("0: Quit")
+    print("4: Show Transactions")
+    print("5: Add Transaction")
+    print("6: Delete Transaction")
+    print("7: Summarize Transactions by Date")
+    print("8: Summarize Transactions by Month")
+    print("9: Summarize Transactions by Year")
+    print("10: Summarize Transactions by Category")
+    print("11: Print this menu")
 
 # Set up a test database file
 TEST_DB_FILE = 'test.db'
@@ -76,12 +76,6 @@ while True:
     choice = int(input("Enter your choice: "))
     if choice == 0:
         quit_program()
-    elif choice == 1:
-        show_categories()
-    elif choice == 2:
-        add_category()
-    elif choice == 3:
-        modify_category()
     elif choice == 4:
         show_transactions()
     elif choice == 5:
