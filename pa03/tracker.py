@@ -13,56 +13,100 @@
 # 11. print this menu
 
 import sqlite3
-import transaction
-
 from transaction import Transaction
 
-class Tracker:
-    def __init__(self, db_filename):
-        self.db = Transaction(db_filename)
-
-    def add_transaction(self):
-        item_number = int(input("Enter item number: "))
-        amount = float(input("Enter amount: "))
-        category = input("Enter category: ")
-        date = input("Enter date (YYYY-MM-DD): ")
-        description = input("Enter description: ")
-        self.db.add_transaction(item_number, amount, category, date, description)
-        print("Transaction added successfully!")
-        
-from transaction import Transaction
-filename=""
-userInput=input("0. quit\n1. show categories\n2. add category\n3. modify category\n4. show transactions\n5. add transaction\n6. delete transaction\n7. summarize transactions by date\n8. summarize transactions by month\n9. summarize transactions by year\n10. summarize transactions by category\n11. print this menu\n")
-if userInput==0:
-    quit
-if userInput==1:
-    t=Transaction(filename)
-
-def quit():
+# Define a function for each menu option
+def quit_program():
+    quit()
 
 def show_categories():
+    pass
 
 def add_category():
+    pass
 
 def modify_category():
+    pass
 
 def show_transactions():
+    pass
 
-def add_transaction(self, item_number, amount, category, date, description):
-        with sqlite3.connect(self.filename) as conn:
-            c = conn.cursor()
-            c.execute('''INSERT INTO transactions (item_number, amount, category, date, description)
-                            VALUES (?, ?, ?, ?, ?)''', (item_number, amount, category, date, description))
-            conn.commit()
+def add_transaction():
+    t = Transaction(filename)
+    item_number = int(input("Enter item number: "))
+    amount = float(input("Enter amount: "))
+    category = input("Enter category: ")
+    date = input("Enter date (YYYY-MM-DD): ")
+    description = input("Enter description: ")
+    t.add_transaction(item_number, amount, category, date, description)
+    print("Transaction added successfully!")
 
 def delete_transaction():
+    pass
 
 def sum_date():
+    pass
 
 def sum_month():
+    pass
 
 def sum_year():
+    pass
 
 def sum_cat():
+    pass
 
 def print_menu():
+    print("0. Quit")
+    print("1. Show Categories")
+    print("2. Add Category")
+    print("3. Modify Category")
+    print("4. Show Transactions")
+    print("5. Add Transaction")
+    print("6. Delete Transaction")
+    print("7. Summarize Transactions by Date")
+    print("8. Summarize Transactions by Month")
+    print("9. Summarize Transactions by Year")
+    print("10. Summarize Transactions by Category")
+    print("11. Print this menu")
+
+# Set up a test database file
+TEST_DB_FILE = 'test.db'
+
+# Get the filename for the production database
+filename = input("Enter the filename for the database: ")
+
+# Initialize a transaction object using the production database
+t = Transaction(filename)
+
+# Loop to handle user input
+while True:
+    print_menu()
+    choice = int(input("Enter your choice: "))
+    if choice == 0:
+        quit_program()
+    elif choice == 1:
+        show_categories()
+    elif choice == 2:
+        add_category()
+    elif choice == 3:
+        modify_category()
+    elif choice == 4:
+        show_transactions()
+    elif choice == 5:
+        add_transaction()
+    elif choice == 6:
+        delete_transaction()
+    elif choice == 7:
+        sum_date()
+    elif choice == 8:
+        sum_month()
+    elif choice == 9:
+        sum_year()
+    elif choice == 10:
+        sum_cat()
+    elif choice == 11:
+        print_menu()
+    else:
+        print("Invalid choice. Please try again.")
+
