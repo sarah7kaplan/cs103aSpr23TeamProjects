@@ -20,6 +20,7 @@ class Transaction:
                         )''')
             conn.commit()
     
+    #Xinyi Shang
     def show_transactions(self):
         with sqlite3.connect(self.filename) as conn:
             c = conn.cursor()
@@ -32,6 +33,7 @@ class Transaction:
                 for row in rows:
                     print(row[0], row[1], row[2], row[3], row[4], row[5])
 
+    #Xinyi Shang
     def add_transaction(self, item_number, amount, category, date, description):
         with sqlite3.connect(self.filename) as conn:
             c = conn.cursor()

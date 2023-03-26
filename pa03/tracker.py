@@ -15,13 +15,15 @@
 import sqlite3
 from transaction import Transaction
 
-# Define a function for each menu option
+
 def quit_program():
     quit()
 
+#Xinyi Shang
 def show_transactions():
     Transaction.get_transaction(filename)
 
+#Xinyi Shang
 def add_transaction():
     t = Transaction(filename)
     item_number = int(input("Enter item number: "))
