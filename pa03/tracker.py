@@ -14,9 +14,4 @@
 
 import sqlite3
 
-def add_transaction(self, item_number, amount, category, date, description):
-        with sqlite3.connect(self.filename) as conn:
-            c = conn.cursor()
-            c.execute('''INSERT INTO transactions (item_number, amount, category, date, description)
-                            VALUES (?, ?, ?, ?, ?)''', (item_number, amount, category, date, description))
-            conn.commit()
+userInput=input("0. quit\n1. show categories\n2. add category\n3. modify category\n4. show transactions\n5. add transaction\n6. delete transaction\n7. summarize transactions by date\n8. summarize transactions by month\n9. summarize transactions by year\n10. summarize transactions by category\n11. print this menu\n")
