@@ -19,7 +19,19 @@ class Transaction:
                             description TEXT
                         )''')
             conn.commit()
-   
+    
+    def show_transactions(self):
+        with sqlite3.connect(self.filename) as conn:
+            c = conn.cursor()
+            c.execute('SELECT * FROM transactions')
+            rows = c.fetchall()
+            if not rows:
+                print("No transactions to display.")
+            else:
+                print("ID", "Item Number", "Amount", "Category", "Date", "Description")
+                for row in rows:
+                    print(row[0], row[1], row[2], row[3], row[4], row[5])
+
     def add_transaction(self, item_number, amount, category, date, description):
         with sqlite3.connect(self.filename) as conn:
             c = conn.cursor()

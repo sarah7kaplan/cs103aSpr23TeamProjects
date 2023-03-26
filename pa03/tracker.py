@@ -20,7 +20,7 @@ def quit_program():
     quit()
 
 def show_transactions():
-    pass
+    Transaction.get_transaction(filename)
 
 def add_transaction():
     t = Transaction(filename)
