@@ -57,7 +57,7 @@ def test_delete():
     trans = Transaction(TEST_DB_FILE)
 
     # Add a transaction and then delete it
-    trans.add_transaction(1, 50.0, 'food', '2022-04-01', 'groceries')
+    trans.add_transaction(50.0, 'food', '2022-04-01', 'groceries')
     trans.delete_transaction(1)
 
     # Check it was deleted
