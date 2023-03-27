@@ -64,7 +64,9 @@ def test_delete():
     # Check it was deleted
     with sqlite3.connect(TEST_DB_FILE) as conn:
         c = conn.cursor()
-        c.execute("SELECT * FROM transactions WHERE item_number=(?)", (1))
+        c.execute("SELECT * FROM transactions WHERE item_number=(?)", (1,))
+        row = c.fetchone()
+        assert row is None
 
 
 

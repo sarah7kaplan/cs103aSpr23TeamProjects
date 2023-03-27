@@ -54,7 +54,7 @@ class Transaction:
     def delete_transaction(self, trans):
         with sqlite3.connect(self.filename) as conn:
             c = conn.cursor()
-            c.execute("DELETE FROM transactions where item_number=(?)",(trans))
+            c.execute("DELETE FROM transactions where item_number=(?)",(trans,))
             conn.commit()
 
     # Michael Pyrdol
