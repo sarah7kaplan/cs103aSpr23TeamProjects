@@ -77,6 +77,7 @@ def test_sum_date():
     trans.add_transaction(50.0, 'food', '2022-04-29', 'groceries')
     trans.add_transaction(10.0, 'clothing', '2022-04-01', 'T-shirt')
     trans.add_transaction(20.0, 'video game', '2017-09-29', 'Cuphead')
+    trans.sum_date(29)
 
     # Check if the correct things were displayed
     with sqlite3.connect(TEST_DB_FILE) as conn:
@@ -84,3 +85,5 @@ def test_sum_date():
         c.execute('SELECT * FROM transactions')
         rows = c.fetchall()
         assert len(rows) == 2
+        assert rows[0][1:] == (50.0, 'food', '2022-04-29', 'groceries')
+        assert rows[1][1:] == (20.0, 'video game', '2017-09-29', 'Cuphead')
