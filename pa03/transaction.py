@@ -108,10 +108,10 @@ class Transaction:
                     if row[3].split("-")[0]==str(year):
                         correctYear=True
                 if correctYear==True:
-                    theString="Item Number", "Amount", "Category", "Date", "Description"
+                    theString="Item Number","Amount","Category","Date","Description","\n"
                     # print("Item Number", "Amount", "Category", "Date", "Description")
                     for row in rows:
                         if row[3].split("-")[0]==str(year):
-                            theString+=row[0], row[1], row[2], row[3], row[4]
+                            theString+=row[0],row[1],row[2],row[3],row[4],"\n"
                             # print(row[0], row[1], row[2], row[3], row[4])
                     return theString

@@ -85,4 +85,10 @@ def test_sum_date():
     trans.add_transaction(50.0, 'food', '2022-04-29', 'groceries')
     trans.add_transaction(10.0, 'clothing', '2022-04-01', 'T-shirt')
     trans.add_transaction(20.0, 'video game', '2017-09-29', 'Cuphead')
-    assert trans.sum_year(2022)=='"Item Number", "Amount", "Category", "Date", "Description"'
+    
+    output=trans.sum_year(2022)
+
+    # Check if the correct 
+    assert "groceries" in output
+    assert "T-shirt" in output
+    assert "Cuphead" not in output
