@@ -6,13 +6,12 @@ from transaction import Transaction
 # Set up a test database file
 TEST_DB_FILE = 'test.db'
 
-#clear database
-if os.path.exists('test.db'):
-        os.remove('test.db')
-
 #Test show_transaction method
 #Xinyi Shang
 def test_show_transactions():
+    #clear database
+    if os.path.exists('test.db'):
+        os.remove('test.db')
     # Initialize a transaction object using the test database file
     trans = Transaction(TEST_DB_FILE)
 
@@ -32,6 +31,9 @@ def test_show_transactions():
 # Test add_transaction method
 # Xinyi Shang
 def test_add_transaction():
+    #clear database
+    if os.path.exists('test.db'):
+        os.remove('test.db')
     # Initialize a transaction object using the test database file
     trans = Transaction(TEST_DB_FILE)
 
@@ -47,12 +49,15 @@ def test_add_transaction():
         assert row is not None
         assert row[1] == 50.0
         assert row[2] == 'food'
-        assert row[3] == '2022-04-01'
+        assert row[3] == '2022-04-03'
         assert row[4] == 'groceries'
 
 # Test delete_transaction
 # Sarah Kaplan
 def test_delete():
+    #clear database
+    if os.path.exists('test.db'):
+        os.remove('test.db')
     # Initialize a transaction object using the test database file
     trans = Transaction(TEST_DB_FILE)
 
@@ -70,6 +75,9 @@ def test_delete():
 # Test sum_date
 # Michael Pyrdol
 def test_sum_date():
+    #clear database
+    if os.path.exists('test.db'):
+        os.remove('test.db')
     # Initialize a transaction object using the test database file
     trans = Transaction(TEST_DB_FILE)
 
@@ -83,4 +91,4 @@ def test_sum_date():
         c = conn.cursor()
         c.execute('SELECT * FROM transactions')
         rows = c.fetchall()
-        assert len(rows) == 2
+        assert len(rows) == 3
