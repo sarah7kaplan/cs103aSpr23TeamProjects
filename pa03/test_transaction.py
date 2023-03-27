@@ -74,7 +74,7 @@ def test_delete():
 
 # Test sum_year
 # Michael Pyrdol
-def test_sum_date():
+def test_sum_year():
     #clear database
     if os.path.exists('test.db'):
         os.remove('test.db')
