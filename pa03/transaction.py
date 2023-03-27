@@ -6,13 +6,13 @@ class Transaction:
     def __init__(self,filename):
         self.filename = filename
         self.create_table()
+        self.item_number = 1
 
     def create_table(self):
         with sqlite3.connect(self.filename) as conn:
             c = conn.cursor()
             c.execute('''CREATE TABLE IF NOT EXISTS transactions (
-                            id INTEGER PRIMARY KEY AUTOINCREMENT,
-                            item_number INTEGER,
+                            item_number INTEGER PRIMARY KEY,
                             amount REAL,
                             category TEXT,
                             date TEXT,
@@ -34,13 +34,14 @@ class Transaction:
                     print(row[0], row[1], row[2], row[3], row[4], row[5])
 
     #Xinyi Shang
-    def add_transaction(self, item_number, amount, category, date, description):
+    def add_transaction(self, amount, category, date, description):
         with sqlite3.connect(self.filename) as conn:
             c = conn.cursor()
             c.execute('''INSERT INTO transactions (
-                            item_number, amount, category, date, description
-                        ) VALUES (?, ?, ?, ?, ?)''', (item_number, amount, category, date, description))
+                            amount, category, date, description
+                        ) VALUES (?, ?, ?, ?)''', (amount, category, date, description))
             conn.commit()
+
    
     # Sarah Kaplan
     def delete_transaction(self, trans):

@@ -5,6 +5,8 @@ from transaction import Transaction
 
 # Set up a test database file
 TEST_DB_FILE = 'test.db'
+
+#clear database
 if os.path.exists('test.db'):
         os.remove('test.db')
 
@@ -15,8 +17,8 @@ def test_show_transactions():
     trans = Transaction(TEST_DB_FILE)
 
     # Add some transactions to the database
-    trans.add_transaction(1, 50.0, 'food', '2022-04-01', 'groceries')
-    trans.add_transaction(2, 25.0, 'clothing', '2022-04-02', 't-shirt')
+    trans.add_transaction(50.0, 'food', '2022-04-01', 'groceries')
+    trans.add_transaction(25.0, 'clothing', '2022-04-02', 't-shirt')
 
     # Check that show_transactions prints out the correct data
     with sqlite3.connect(TEST_DB_FILE) as conn:
@@ -24,8 +26,8 @@ def test_show_transactions():
         c.execute('SELECT * FROM transactions')
         rows = c.fetchall()
         assert len(rows) == 2
-        assert rows[0][1:] == (1, 50.0, 'food', '2022-04-01', 'groceries')
-        assert rows[1][1:] == (2, 25.0, 'clothing', '2022-04-02', 't-shirt')
+        assert rows[0][1:] == (50.0, 'food', '2022-04-01', 'groceries')
+        assert rows[1][1:] == (25.0, 'clothing', '2022-04-02', 't-shirt')
 
 
 # Test add_transaction method
@@ -35,20 +37,18 @@ def test_add_transaction():
     trans = Transaction(TEST_DB_FILE)
 
     # Add a transaction
-    trans.add_transaction(1, 50.0, 'food', '2022-04-01', 'groceries')
+    trans.add_transaction(50.0, 'food', '2022-04-03', 'groceries')
 
     # Check that the transaction was added correctly
     with sqlite3.connect(TEST_DB_FILE) as conn:
         c = conn.cursor()
         c.execute('SELECT * FROM transactions WHERE item_number = ?', (1,))
         row = c.fetchone()
-        print(row)
         assert row is not None
-        assert row[1] == 1
-        assert row[2] == 50.0
-        assert row[3] == 'food'
-        assert row[4] == '2022-04-01'
-        assert row[5] == 'groceries'
+        assert row[1] == 50.0
+        assert row[2] == 'food'
+        assert row[3] == '2022-04-01'
+        assert row[4] == 'groceries'
 
 # Test delete_transaction
 # Sarah Kaplan

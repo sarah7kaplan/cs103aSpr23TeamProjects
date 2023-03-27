@@ -26,12 +26,11 @@ def show_transactions():
 #Xinyi Shang
 def add_transaction():
     t = Transaction(filename)
-    item_number = int(input("Enter item number: "))
     amount = float(input("Enter amount: "))
     category = input("Enter category: ")
     date = input("Enter date (YYYY-MM-DD): ")
     description = input("Enter description: ")
-    t.add_transaction(item_number, amount, category, date, description)
+    t.add_transaction(amount, category, date, description)
     print("Transaction added successfully!")
 
 # Sarah Kaplan
