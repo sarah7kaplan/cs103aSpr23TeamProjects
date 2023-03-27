@@ -87,13 +87,14 @@ class Transaction:
             else:
                 month=False
                 for row in rows:
-                    if row[3].split("-")[1]==month:
+                    if row[3].split("-")[1]==str(month):
                         month=True
                 if month==True:
-                    print("Item Number", "Amount", "Category", "Date", "Description")
+                    theString="Item Number","Amount","Category","Date","Description","\n"
                     for row in rows:
-                        if row[3].split("-")[1]==month:
-                            print(row[0], row[1], row[2], row[3], row[4])
+                        if row[3].split("-")[1]==str(month):
+                            theString+=row[0],row[1],row[2],row[3],row[4],"\n"
+                    return theString
     # Michael Pyrdol
     def sum_year(self,year):
         with sqlite3.connect(self.filename) as conn:
@@ -109,9 +110,7 @@ class Transaction:
                         correctYear=True
                 if correctYear==True:
                     theString="Item Number","Amount","Category","Date","Description","\n"
-                    # print("Item Number", "Amount", "Category", "Date", "Description")
                     for row in rows:
                         if row[3].split("-")[0]==str(year):
                             theString+=row[0],row[1],row[2],row[3],row[4],"\n"
-                            # print(row[0], row[1], row[2], row[3], row[4])
                     return theString
