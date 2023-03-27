@@ -20,8 +20,8 @@ class Transaction:
             conn.commit()
     
     #Xinyi Shang
-    def show_transactions(self):
-        with sqlite3.connect(self.filename) as conn:
+    def show_transactions(self,filename):
+        with sqlite3.connect(filename) as conn:
             c = conn.cursor()
             c.execute('SELECT * FROM transactions')
             rows = c.fetchall()
@@ -103,17 +103,15 @@ class Transaction:
             if not rows:
                 return "No transactions to display."
             else:
-                year=False
+                correctYear=False
                 for row in rows:
-                    if row[3].split("-")[0]==year:
-                        year=True
-                if year==True:
-                    theString="hi"
-                    # theString="Item Number", "Amount", "Category", "Date", "Description"
+                    if row[3].split("-")[0]==str(year):
+                        correctYear=True
+                if correctYear==True:
+                    theString="Item Number", "Amount", "Category", "Date", "Description"
                     # print("Item Number", "Amount", "Category", "Date", "Description")
                     for row in rows:
-                        if row[3].split("-")[0]==year:
-                            theString+="hello"
-                            # theString+=row[0], row[1], row[2], row[3], row[4]
+                        if row[3].split("-")[0]==str(year):
+                            theString+=row[0], row[1], row[2], row[3], row[4]
                             # print(row[0], row[1], row[2], row[3], row[4])
                     return theString
