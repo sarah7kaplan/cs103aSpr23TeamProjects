@@ -1,8 +1,8 @@
 # Options:
 # 0. quit
-# 1. show categories
-# 2. add category
-# 3. modify category
+# 1. show categories XXX
+# 2. add category XXX
+# 3. modify category XXX
 # 4. show transactions
 # 5. add transaction
 # 6. delete transaction
@@ -12,7 +12,6 @@
 # 10. summarize transactions by category
 # 11. print this menu
 
-import sqlite3
 from transaction import Transaction
 
 def quit_program():
@@ -53,15 +52,21 @@ def sum_year():
     year=input("Please enter the desired year (YYYY): ")
     print(t.sum_year(year))
 
+# Michael Pyrdol
+def sum_categories():
+    category=input("Please enter the desired category: ")
+    print(t.sum_category(category))
+
 def print_menu():
     print("0: Quit")
-    print("4: Show Transactions")
-    print("5: Add Transaction")
-    print("6: Delete Transaction")
-    print("7: Summarize Transactions by Date")
-    print("8: Summarize Transactions by Month")
-    print("9: Summarize Transactions by Year")
-    print("11: Print this menu")
+    print("1: Show Transactions")
+    print("2: Add Transaction")
+    print("3: Delete Transaction")
+    print("4: Summarize Transactions by Date")
+    print("5: Summarize Transactions by Month")
+    print("6: Summarize Transactions by Year")
+    print("7: Summarize Transactions by Category")
+    print("8: Print this menu")
 
 # Set up a test database file
 TEST_DB_FILE = 'test.db'
@@ -78,20 +83,21 @@ while True:
     choice = int(input("Enter your choice: "))
     if choice == 0:
         quit_program()
-    elif choice == 4:
+    elif choice == 1:
         show_transactions()
-    elif choice == 5:
+    elif choice == 2:
         add_transaction()
-    elif choice == 6:
+    elif choice == 3:
         delete_transaction()
-    elif choice == 7:
+    elif choice == 4:
         sum_date()
-    elif choice == 8:
+    elif choice == 5:
         sum_month()
-    elif choice == 9:
+    elif choice == 6:
         sum_year()
-    elif choice == 11:
+    elif choice == 7:
+        sum_categories()
+    elif choice == 8:
         print_menu()
     else:
         print("Invalid choice. Please try again.")
-

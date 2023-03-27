@@ -115,3 +115,22 @@ class Transaction:
                         if row[3].split("-")[0]==str(year):
                             theString+=row[0],row[1],row[2],row[3],row[4],"\n"
                     return theString
+    # Michael Pyrdol
+    def sum_category(self,category):
+        with sqlite3.connect(self.filename) as conn:
+            c = conn.cursor()
+            c.execute('SELECT * FROM transactions')
+            rows=c.fetchall()
+            if not rows:
+                return "No transactions to display."
+            else:
+                correctCategory=False
+                for row in rows:
+                    if row[2]==category:
+                        correctCategory=True
+                if correctCategory==True:
+                    theString="Item Number","Amount","Category","Date","Description","\n"
+                    for row in rows:
+                        if row[2]==category:
+                            theString+=row[0],row[1],row[2],row[3],row[4],"\n"
+                    return theString

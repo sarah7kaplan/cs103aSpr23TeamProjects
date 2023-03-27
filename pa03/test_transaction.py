@@ -72,9 +72,9 @@ def test_delete():
         row = c.fetchone()
         assert row is None
 
-# Test sum_year
-# Michael Pyrdol
-def test_sum_year():
+# Test sum_date
+# James Yu
+def test_sum_date():
     #clear database
     if os.path.exists('test.db'):
         os.remove('test.db')
@@ -82,17 +82,16 @@ def test_sum_year():
     trans = Transaction(TEST_DB_FILE)
 
     # Add a few transactions of various dates
-    trans.add_transaction(50.0, 'food', '2022-04-29', 'groceries')
-    trans.add_transaction(10.0, 'clothing', '2022-04-01', 'T-shirt')
-    trans.add_transaction(20.0, 'video game', '2017-09-29', 'Cuphead')
+    trans.add_transaction(50.0, 'food', '2022-10-29', 'groceries')
+    trans.add_transaction(10.0, 'clothing', '2022-10-01', 'T-shirt')
+    trans.add_transaction(20.0, 'video game', '2017-11-29', 'Cuphead')
     
-    output=trans.sum_year(2022)
+    output=trans.sum_date(29)
 
     # Check if the correct 
     assert "groceries" in output
-    assert "T-shirt" in output
-    assert "Cuphead" not in output
-
+    assert "T-shirt" not in output
+    assert "Cuphead" in output
 
 # Test sum_month
 # James Yu
@@ -115,10 +114,9 @@ def test_sum_month():
     assert "T-shirt" not in output
     assert "Cuphead" in output
 
-
-# Test sum_date
-# James Yu
-def test_sum_date():
+# Test sum_year
+# Michael Pyrdol
+def test_sum_year():
     #clear database
     if os.path.exists('test.db'):
         os.remove('test.db')
@@ -126,13 +124,34 @@ def test_sum_date():
     trans = Transaction(TEST_DB_FILE)
 
     # Add a few transactions of various dates
-    trans.add_transaction(50.0, 'food', '2022-10-29', 'groceries')
-    trans.add_transaction(10.0, 'clothing', '2022-10-01', 'T-shirt')
-    trans.add_transaction(20.0, 'video game', '2017-11-29', 'Cuphead')
+    trans.add_transaction(50.0, 'food', '2022-04-29', 'groceries')
+    trans.add_transaction(10.0, 'clothing', '2022-04-01', 'T-shirt')
+    trans.add_transaction(20.0, 'video game', '2017-09-29', 'Cuphead')
     
-    output=trans.sum_date(29)
+    output=trans.sum_year(2022)
+
+    # Check if the correct 
+    assert "groceries" in output
+    assert "T-shirt" in output
+    assert "Cuphead" not in output
+
+# Test sum_category
+# Michael Pyrdol
+def test_sum_category():
+    #clear database
+    if os.path.exists('test.db'):
+        os.remove('test.db')
+    # Initialize a transaction object using the test database file
+    trans = Transaction(TEST_DB_FILE)
+
+    # Add a few transactions of various dates
+    trans.add_transaction(50.0, 'food', '2022-04-29', 'groceries')
+    trans.add_transaction(10.0, 'clothing', '2022-04-01', 'T-shirt')
+    trans.add_transaction(20.0, 'food', '2017-09-29', 'garlic')
+    
+    output=trans.sum_category("food")
 
     # Check if the correct 
     assert "groceries" in output
     assert "T-shirt" not in output
-    assert "Cuphead" in output
+    assert "garlic" in output
