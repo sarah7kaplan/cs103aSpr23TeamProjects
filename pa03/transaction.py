@@ -6,7 +6,6 @@ class Transaction:
     def __init__(self,filename):
         self.filename = filename
         self.create_table()
-        self.item_number = 1
 
     def create_table(self):
         with sqlite3.connect(self.filename) as conn:
@@ -37,9 +36,17 @@ class Transaction:
     def add_transaction(self, amount, category, date, description):
         with sqlite3.connect(self.filename) as conn:
             c = conn.cursor()
+            c.execute('SELECT COUNT(*) FROM transactions')
+            count = c.fetchone()[0]
+            if count == 0:
+                item_number = 1
+            else:
+                c.execute('SELECT MAX(item_number) FROM transactions')
+                max_item_number = c.fetchone()[0]
+                item_number = max_item_number + 1
             c.execute('''INSERT INTO transactions (
-                            amount, category, date, description
-                        ) VALUES (?, ?, ?, ?)''', (amount, category, date, description))
+                            item_number, amount, category, date, description
+                        ) VALUES (?, ?, ?, ?, ?)''', (item_number, amount, category, date, description))
             conn.commit()
 
    

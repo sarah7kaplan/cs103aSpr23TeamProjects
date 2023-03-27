@@ -20,7 +20,7 @@ def test_show_transactions():
     trans.add_transaction(50.0, 'food', '2022-04-01', 'groceries')
     trans.add_transaction(25.0, 'clothing', '2022-04-02', 't-shirt')
 
-    # Check that show_transactions prints out the correct data
+# Check that show_transactions prints out the correct data
     with sqlite3.connect(TEST_DB_FILE) as conn:
         c = conn.cursor()
         c.execute('SELECT * FROM transactions')
@@ -44,6 +44,7 @@ def test_add_transaction():
         c = conn.cursor()
         c.execute('SELECT * FROM transactions WHERE item_number = ?', (1,))
         row = c.fetchone()
+        print(row)
         assert row is not None
         assert row[1] == 50.0
         assert row[2] == 'food'
