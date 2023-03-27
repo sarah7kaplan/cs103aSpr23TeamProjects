@@ -39,17 +39,20 @@ def delete_transaction():
     t.delete_transaction(trans)
     print("Transaction deleted successfully!")
 
+# Michael Pyrdol
 def sum_date():
-    pass
+    date=input("Please enter the desired date (DD): ")
+    t.sum_date(date)
 
+# Michael Pyrdol
 def sum_month():
-    pass
+    month=input("Please enter the desired month (MM): ")
+    t.sum_month(month)
 
+# Michael Pyrdol
 def sum_year():
-    pass
-
-def sum_cat():
-    pass
+    year=input("Please enter the desired year (YYYY): ")
+    t.sum_year(year)
 
 def print_menu():
     print("0: Quit")
@@ -59,7 +62,6 @@ def print_menu():
     print("7: Summarize Transactions by Date")
     print("8: Summarize Transactions by Month")
     print("9: Summarize Transactions by Year")
-    print("10: Summarize Transactions by Category")
     print("11: Print this menu")
 
 # Set up a test database file
@@ -89,8 +91,6 @@ while True:
         sum_month()
     elif choice == 9:
         sum_year()
-    elif choice == 10:
-        sum_cat()
     elif choice == 11:
         print_menu()
     else:

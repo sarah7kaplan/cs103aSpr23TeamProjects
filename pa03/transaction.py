@@ -49,3 +49,59 @@ class Transaction:
             c = conn.cursor()
             c.execute("DELETE FROM transactions where item_number=(?)",(trans))
             conn.commit()
+
+    # Michael Pyrdol
+    def sum_date(self,date):
+        with sqlite3.connect(self.filename) as conn:
+            c = conn.cursor()
+            c.execute('SELECT * FROM transactions')
+            rows=c.fetchall()
+            if not rows:
+                print("No transactions to display.")
+            else:
+                date=False
+                for row in rows:
+                    if row[3].split("-")[2]==date:
+                        date=True
+                if date==True:
+                    print("Item Number", "Amount", "Category", "Date", "Description")
+                    for row in rows:
+                        if row[3].split("-")[2]==date:
+                            print(row[0], row[1], row[2], row[3], row[4])
+            
+    # Michael Pyrdol
+    def sum_month(self,month):
+        with sqlite3.connect(self.filename) as conn:
+            c = conn.cursor()
+            c.execute('SELECT * FROM transactions')
+            rows=c.fetchall()
+            if not rows:
+                print("No transactions to display.")
+            else:
+                month=False
+                for row in rows:
+                    if row[3].split("-")[1]==month:
+                        month=True
+                if month==True:
+                    print("Item Number", "Amount", "Category", "Date", "Description")
+                    for row in rows:
+                        if row[3].split("-")[1]==month:
+                            print(row[0], row[1], row[2], row[3], row[4])
+    # Michael Pyrdol
+    def sum_year(self,year):
+        with sqlite3.connect(self.filename) as conn:
+            c = conn.cursor()
+            c.execute('SELECT * FROM transactions')
+            rows=c.fetchall()
+            if not rows:
+                print("No transactions to display.")
+            else:
+                year=False
+                for row in rows:
+                    if row[3].split("-")[0]==year:
+                        year=True
+                if year==True:
+                    print("Item Number", "Amount", "Category", "Date", "Description")
+                    for row in rows:
+                        if row[3].split("-")[0]==year:
+                            print(row[0], row[1], row[2], row[3], row[4])
