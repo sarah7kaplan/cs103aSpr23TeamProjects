@@ -64,17 +64,18 @@ class Transaction:
             c.execute('SELECT * FROM transactions')
             rows=c.fetchall()
             if not rows:
-                print("No transactions to display.")
+                return "No transactions to display."
             else:
-                date=False
+                correctDate=False
                 for row in rows:
-                    if row[3].split("-")[2]==date:
-                        date=True
-                if date==True:
-                    print("Item Number", "Amount", "Category", "Date", "Description")
+                    if row[3].split("-")[2]==str(date):
+                        correctDate=True
+                if correctDate==True:
+                    theString="Item Number","Amount","Category","Date","Description","\n"
                     for row in rows:
-                        if row[3].split("-")[2]==date:
-                            print(row[0], row[1], row[2], row[3], row[4])
+                        if row[3].split("-")[2]==str(date):
+                            theString+=row[0],row[1],row[2],row[3],row[4],"\n"
+                    return theString
             
     # Michael Pyrdol
     def sum_month(self,month):
@@ -83,13 +84,13 @@ class Transaction:
             c.execute('SELECT * FROM transactions')
             rows=c.fetchall()
             if not rows:
-                print("No transactions to display.")
+                return "No transactions to display."
             else:
-                month=False
+                correctMonth=False
                 for row in rows:
                     if row[3].split("-")[1]==str(month):
-                        month=True
-                if month==True:
+                        correctMonth=True
+                if correctMonth==True:
                     theString="Item Number","Amount","Category","Date","Description","\n"
                     for row in rows:
                         if row[3].split("-")[1]==str(month):

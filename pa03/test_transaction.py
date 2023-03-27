@@ -92,3 +92,47 @@ def test_sum_year():
     assert "groceries" in output
     assert "T-shirt" in output
     assert "Cuphead" not in output
+
+
+# Test sum_month
+# James Yu
+def test_sum_month():
+    #clear database
+    if os.path.exists('test.db'):
+        os.remove('test.db')
+    # Initialize a transaction object using the test database file
+    trans = Transaction(TEST_DB_FILE)
+
+    # Add a few transactions of various dates
+    trans.add_transaction(50.0, 'food', '2022-10-29', 'groceries')
+    trans.add_transaction(10.0, 'clothing', '2022-10-01', 'T-shirt')
+    trans.add_transaction(20.0, 'video game', '2017-11-29', 'Cuphead')
+    
+    output=trans.sum_month(11)
+
+    # Check if the correct 
+    assert "groceries" not in output
+    assert "T-shirt" not in output
+    assert "Cuphead" in output
+
+
+# Test sum_date
+# James Yu
+def test_sum_date():
+    #clear database
+    if os.path.exists('test.db'):
+        os.remove('test.db')
+    # Initialize a transaction object using the test database file
+    trans = Transaction(TEST_DB_FILE)
+
+    # Add a few transactions of various dates
+    trans.add_transaction(50.0, 'food', '2022-10-29', 'groceries')
+    trans.add_transaction(10.0, 'clothing', '2022-10-01', 'T-shirt')
+    trans.add_transaction(20.0, 'video game', '2017-11-29', 'Cuphead')
+    
+    output=trans.sum_date(29)
+
+    # Check if the correct 
+    assert "groceries" in output
+    assert "T-shirt" not in output
+    assert "Cuphead" in output

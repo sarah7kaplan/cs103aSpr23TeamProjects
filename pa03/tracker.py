@@ -41,12 +41,12 @@ def delete_transaction():
 # Michael Pyrdol
 def sum_date():
     date=input("Please enter the desired date (DD): ")
-    t.sum_date(date)
+    print(t.sum_date(date))
 
 # Michael Pyrdol
 def sum_month():
     month=input("Please enter the desired month (MM): ")
-    t.sum_month(month)
+    print(t.sum_month(month))
 
 # Michael Pyrdol
 def sum_year():
