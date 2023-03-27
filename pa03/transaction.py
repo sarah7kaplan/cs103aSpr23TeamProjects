@@ -28,9 +28,9 @@ class Transaction:
             if not rows:
                 print("No transactions to display.")
             else:
-                print("ID", "Item Number", "Amount", "Category", "Date", "Description")
+                print("Item Number", "Amount", "Category", "Date", "Description")
                 for row in rows:
-                    print(row[0], row[1], row[2], row[3], row[4], row[5])
+                    print(row[0], row[1], row[2], row[3], row[4])
 
     #Xinyi Shang
     def add_transaction(self, amount, category, date, description):
