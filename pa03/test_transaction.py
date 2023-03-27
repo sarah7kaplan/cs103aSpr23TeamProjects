@@ -29,7 +29,6 @@ def test_show_transactions():
         assert rows[0][1:] == (50.0, 'food', '2022-04-01', 'groceries')
         assert rows[1][1:] == (25.0, 'clothing', '2022-04-02', 't-shirt')
 
-
 # Test add_transaction method
 # Xinyi Shang
 def test_add_transaction():
@@ -68,5 +67,20 @@ def test_delete():
         row = c.fetchone()
         assert row is None
 
+# Test sum_date
+# Michael Pyrdol
+def test_sum_date():
+    # Initialize a transaction object using the test database file
+    trans = Transaction(TEST_DB_FILE)
 
+    # Add a few transactions of various dates
+    trans.add_transaction(50.0, 'food', '2022-04-29', 'groceries')
+    trans.add_transaction(10.0, 'clothing', '2022-04-01', 'T-shirt')
+    trans.add_transaction(20.0, 'video game', '2017-09-29', 'Cuphead')
 
+    # Check if the correct things were displayed
+    with sqlite3.connect(TEST_DB_FILE) as conn:
+        c = conn.cursor()
+        c.execute('SELECT * FROM transactions')
+        rows = c.fetchall()
+        assert len(rows) == 2
