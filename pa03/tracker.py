@@ -52,7 +52,7 @@ def sum_month():
 # Michael Pyrdol
 def sum_year():
     year=input("Please enter the desired year (YYYY): ")
-    t.sum_year(year)
+    print(t.sum_year(year))
 
 def print_menu():
     print("0: Quit")
