@@ -1,4 +1,4 @@
-<h1>Transactions for jamesyu@brandeis.edu</h1>
+<h1>Transactions for everyone@brandeis.edu</h1>
 <p>Here is your list of transactions and amounts!</p>
 <% if (!group) { %>
 <div class="container border text-center">
@@ -17,6 +17,7 @@
         <td>Category</td>
         <td>Date</td>
         <td>Delete</td>
+        <td>Edit</td>
     </tr>
     <% transactions.forEach(transaction=> { %>
         <tr>
@@ -33,6 +34,7 @@
                 <%= transaction.date%>
             </td>
             <td><a href="/transaction/remove/<%= transaction._id%>" class="bi bi-trash"></a></td>
+            <td><a href="/transaction/edit/<%= transaction._id%>" class="bi bi-pencil-square"></a></td>
             <% }); %>
         </tr>
 </table>
