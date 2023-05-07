@@ -1,7 +1,7 @@
 <style>
     #prompt{
-        display: inline-block;
-        border: none;
+        display: block;
+        border: solid;
         border-bottom: 1px solid black;
         width: 500px;
         text-align: left;
@@ -12,9 +12,6 @@
     #submit {
         display: none;
     }
-    p {
-        display: inline-block;
-    }
     .outer {
         display: flex;
         flex-direction: column;
@@ -23,7 +20,6 @@
 </style>
 <div class="outer">
     <h1>Welcome to Michael's ChatGPT page!</h1>
-
     <form action="/api/v1/prompt/michael" method="POST">
         <p>Insert something to be rewritten in 3rd-grader vocabulary:</p><input type="text" autocomplete="off" name="prompt" id="prompt">
         </p>
@@ -39,14 +35,14 @@
     const handleSubmit = async (e) => {
         e.preventDefault();
         const prompt = promptField.value;
-        response.innerHTML = "Loading...";
+        response.innerHTML = "Generating response...";
 
         const res = await fetch("/api/v1/prompt/michael", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify({ prompt: `Wewrite this with 3rd-grader vocabulary: ${prompt}.` }),
+            body: JSON.stringify({ prompt: `Rewrite this with 3rd-grader vocabulary: ${prompt}` }),
         });
         if (res.status !== 200) {
             response.innerHTML = JSON.stringify(await res.json());
@@ -55,7 +51,5 @@
             response.innerHTML = await res.text();
         }
     }
-
     submit.addEventListener("click", handleSubmit);
-
 </script>
