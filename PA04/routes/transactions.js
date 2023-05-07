@@ -4,11 +4,9 @@
   Express/Mongoose. It includes add, delete, and sort
   functionalities.
 */
-
 express = require('express');
 const router = express.Router();
 const transaction = require('../models/transaction')
-
 isLoggedIn = (_,res,next) => {
     if (res.locals.loggedIn) {
       next()
@@ -16,7 +14,6 @@ isLoggedIn = (_,res,next) => {
       res.redirect('/login')
     }
   }
-
   //returns a transaction
 router.get('/transaction/', isLoggedIn, async (req, res) => {
     let transactions
@@ -38,8 +35,6 @@ router.get('/transaction/', isLoggedIn, async (req, res) => {
     }
         res.render('transaction', {transactions})
 })
-
-
 router.post('/transaction', isLoggedIn, async (req, res) => {
     const newTransaction = new transaction({
         description: req.body.description,
@@ -51,14 +46,14 @@ router.post('/transaction', isLoggedIn, async (req, res) => {
     await newTransaction.save()
     res.redirect('/transaction')
 })
-
-
 router.get('/transaction/remove/:transactionId', isLoggedIn, async (req, res) => {
     await transaction.deleteOne({_id:req.params.transactionId});
       res.redirect('/transaction')
 })
-
-
+router.get('/transaction/edit/:transactionId', isLoggedIn, async (req, res) => {
+  const item = await transaction.findById(req.params.transactionId)
+  res.render('editTransaction', {item})
+})
 router.post('/transaction/put', isLoggedIn, async (req, res) => {
     const {description, amount, category, date, itemId} = req.body
     await transaction.findOneAndUpdate(
@@ -66,6 +61,4 @@ router.post('/transaction/put', isLoggedIn, async (req, res) => {
         {$set: {description, amount, category, date}} );
       res.redirect('/transaction')
 })
-
-
 module.exports = router
