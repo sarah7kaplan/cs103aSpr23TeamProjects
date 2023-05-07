@@ -6,6 +6,7 @@ const logger = require('morgan');
 const layouts = require("express-ejs-layouts");
 const pw_auth_router = require('./routes/pwauth')
 const michaelRouter = require('./routes/michael');
+const jamesRouter = require('./routes/james');
 
 const User = require('./models/User');
 
@@ -111,6 +112,7 @@ isLoggedIn,
   }
   )
 app.use(michaelRouter);
+app.use(jamesRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

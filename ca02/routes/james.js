@@ -1,5 +1,5 @@
 /*
-  This is the part that gets the GPT API for Michael's GPT page.
+  This is the part that gets the GPT API for james's GPT page.
 */
 const express = require('express');
 const router = express.Router();
@@ -11,10 +11,10 @@ isLoggedIn = (req,res,next) => {
     res.redirect('/login')
   }
 }
-router.get('/michael', isLoggedIn, (req,res) => {
-    res.render('michael')
+router.get('/james', isLoggedIn, (req,res) => {
+    res.render('james')
 })
-router.post('/api/v1/prompt/michael', isLoggedIn, async (req,res) => {
+router.post('/api/v1/prompt/james', isLoggedIn, async (req,res) => {
   if (!req.body.prompt) {res.status(400).json({error: 'prompt is required'}).send(); return}
   const response = await axios.post('http://gracehopper.cs-i.brandeis.edu:3500/openai',
   {prompt:req.body.prompt})
